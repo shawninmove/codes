@@ -1,0 +1,33 @@
+	yum -y groupinstall "Development Tools" 
+
+    yum -y install gtk+-devel gtk2-devel
+
+    yum -y install libXpm-devel 
+
+    yum -y install libpng-devel 
+
+    yum -y install giflib-devel 
+
+    yum -y install libtiff-devel libjpeg-devel 
+
+    yum -y install ncurses-devel   www.2cto.com  
+
+    yum -y install gpm-devel dbus-devel dbus-glib-devel dbus-python 
+
+    yum -y install GConf2-devel pkgconfig     
+
+    yum -y install libXft-devel 
+
+    
+
+    二、解压后配置安装
+
+    tar xvf emacs-24.2.tar.gz 
+
+    cd emacs-24.2 
+
+    ./configure –prefix=/usr/local –with-x-toolkit=gtk 
+
+    make
+
+link:  http://blog.sina.com.cn/s/blog_9fc460750101id37.html
