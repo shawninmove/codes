@@ -1,0 +1,15 @@
+#!/usr/bin/sbcl --script
+
+(let ((a 0) (b 1))
+  (defun fib-next ()
+	(setf b (+ a b) a (- b a))
+	b)
+  (defun fib-reset ()
+	(setf a 0 b 1)
+	0))
+(format t "~A ~%" (fib-next))
+(format t "~A ~%" (fib-next))
+(format t "~A ~%" (fib-next))
+(format t "~A ~%" (fib-reset))
+(format t "~A ~%" (fib-next))
+(format t "~A ~%" (fib-next))
