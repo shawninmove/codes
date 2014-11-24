@@ -1,26 +1,31 @@
 #include "stdio.h"
-void quick_sort(int[], int left, int right);
-int main() {
-	int array[] = {2,4,5,6,7,1,9,7,6,5};
-	quick_sort(array, 0, 10);
-	return 0;
+
+int sort(int arr[], int low, int high) {
+	int sentry = arr[low]; //create a slot at low
+	while(low < high) {
+		while(low < high && arr[high] > sentry) high--; //find a smaller to fill the slot, and create a new slot
+		arr[low] = arr[high];
+		while(low < high && arr[low] < sentry) low++; //find a bigger to fill the slot, and create a new slot
+		arr[high] = arr[low];
+	}
+	arr[low] = sentry; //fill in the slot
+	return low;
+}
+void quick_sort(int arr[], int low, int high) {
+	int loc = 0;
+	if(low < high) {
+		loc = sort(arr, low, high);
+		quick_sort(arr, low, loc - 1);
+		quick_sort(arr, loc + 1, high);
+	}
 }
 
-void quick_sort(int *array, int left, int right) {
-	int i = left;
-	int j = right;
-	int slot = array[left];
-	while(i < j) {
-		while(i < j && array[j] >= slot) j--;
-		if(i < j) array[i++] = array[j];
-		while(i < j && array[i] < slot) i++;
-		if(i < j) array[j--] = array[i];
+int main() {
+	int arr[] = {2,-10,11,7,8,6,5,3,1,0,33,48};
+	quick_sort(arr, 0, 11);
+	int i = 0;
+	for(; i < 12; i++) {
+		printf("%d ", arr[i]);
 	}
-	array[i] = slot;
-	quick_sort(array, left, i - 1);
-	quick_sort(array, i + 1, right);
-	int k = 0;
-	for(; k < 10; k++) {
-		printf("%d", array[k]);
-	}
+	return 0;
 }
